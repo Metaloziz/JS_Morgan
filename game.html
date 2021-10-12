@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Сайт для тренировок</title>
+</head>
+
+<body>
+    <h1>Виселица!</h1>
+
+    <script>
+
+        var words = [
+            "и",
+            "ви",
+            "окн",
+            "цвет",
+            "метал",
+        ];
+        // выбор слова
+        var pickWord = function () {
+            words[(Math.floor(Math.random() * words.length))];
+        };
+        // создаёт массив для заданного слова
+        var setupAnswerArray = function (word) {
+            var answerArray = [];
+            for (i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+        }
+        
+        //случайное слово
+        var word = pickWord();
+
+        // текущее состояние игры
+        var showPlayerProgress = function(answerArray) {
+            alert(answerArray)
+        }
+        
+        // запрос ответа игрока
+        var getGuess = function() {
+            while (remainingLetters > 0 && t < 5) {
+            t++;
+            alert(answerArray.join(" "));
+            var guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("Введите одну букву.")
+            } else if (guess == (" ")) {
+                alert("Типо умный сильно ?")
+            } else {
+
+                // обновление состояния игры
+                for (j = 0; j < word.length; j++) {
+                    if (word[j] === guess && answerArray[j] == ("_")) {
+                        answerArray[j] = guess;
+                        remainingLetters--
+                    };
+                };
+            };
+        };
+        }
+
+        var updateGameStatus = function (guess, word, answerArray) {
+
+        }
+
+        var showAnswerAndCongratulatePlayer = function (answerArray) {
+            alert(answerArray.join(" "))
+
+        // вывод если начать ОТМЕНА
+        if (remainingLetters > 0) {
+            alert("слабак");
+        } else
+            alert("Отлично, Вы отгадали слово - " + word)
+        }
+
+        // сколько букв осталось угадать
+        var remainingLetters = word.length;
+        var t = 0;
+
+        //Игровой цикл,  T - колличество попыток ввода 
+        while (remainingLetters > 0 && t < 5) {
+            t++;
+            alert(answerArray.join(" "));
+            var guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
+            if (guess === null) {
+                break;
+            } else if (guess.length !== 1) {
+                alert("Введите одну букву.")
+            } else if (guess == (" ")) {
+                alert("Типо умный сильно ?")
+            } else {
+
+                // обновление состояния игры
+                for (j = 0; j < word.length; j++) {
+                    if (word[j] === guess && answerArray[j] == ("_")) {
+                        answerArray[j] = guess;
+                        remainingLetters--
+                    };
+                };
+            };
+        };
+        alert(answerArray.join(" "))
+
+        // вывод если начать ОТМЕНА
+        if (remainingLetters > 0) {
+            alert("слабак");
+        } else
+            alert("Отлично, Вы отгадали слово - " + word)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Сайт для тренировок</title>
+</head>
+
+<body>
+    <h1>Виселица!</h1>
+
+    <script>
+        var pickWord = function () {
+            var words = [
+                "и",
+                "ви",
+                "окн",
+                "цвет",
+                "метал",
+            ];
+            return words[Math.floor(Math.random() * words.length)];
+        };
+
+        // создаёт массив для заданного слова
+        var setupAnswerArray = function (word) {
+            var answerArray = [];
+            for (i = 0; i < word.length; i++) {
+                answerArray[i] = "_";
+            }
+        }
+
+        // текущее состояние игры
+        var showPlayerProgress = function (answerArray) {
+            alert(answerArray.join (" "))
+        }
+
+        // запрос
+        var getGuess = function () {
+            return prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
+        }
+
+        // обновление
+        var updateGameStatus = function (guess, word, answerArray) {
+            var appearances = 0
+            for (let j = 0; j < word.length; j++) {
+                if (word[j] === guess) {
+                    answerArray[j] = guess;
+                    appearances++
+                }
+            }
+            return appearances
+        };
+
+        // Поздравление
+        var showAnswerAndCongratulatePlayer = function(answerArray){
+            showPlayerProgress(answerArray);
+            alert("Отлично " + answerArray.join(""));
+        };
+
+        //случайное слово
+        var word = pickWord();
+        var answerArray = setupAnswerArray(word);
+        var remainingLetters = word.length;
+
+            while (remainingLetters > 0) {
+                showPlayerProgress(answerArray);
+                var guess = getGuess();
+                if (guess === null){
+                    alert("Ты будешь что-нибудь вводить ?")
+                } else if (guess.length !== 1){
+                    alert("ОДНУ БУКВУ, АЛЁ")
+                } else {
+                    var correctGuesses = updateGameStatus(guess, word, answerArray);
+                remainingLetters -= correctGuesses;
+                }
+            }
+
+            showAnswerAndCongratulatePlayer(answerArray);
+                        
+                    
+                
+        
+    </script>
+</body>
+
+</html>
