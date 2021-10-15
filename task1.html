@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Сайт для тренировок</title>
+</head>
+
+<body>
+    <h1 id="title">Тренировочный Сайт</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+
+
+    <script>
+        var friends = ["Andrew", "Alex", "Michail", "Evgeny"];
+
+        for (let i = 0; i < friends.length; i++) {
+            $("body").append("<p>" + friends[i] + "</p>")
+        } 
+
+        $("p").hide(2000)
+        $("p").fadeIn(1000)
+        $(title).text("Hello friends!")
+        $("p").append(" - best")
+        
+    </script>
+
+
+</body>
+
+</html>
