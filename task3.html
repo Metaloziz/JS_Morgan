@@ -1,29 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Сайт для тренировок</title>
+    <meta charset="UTF-8">
+    <title>Интерактивное программирование</title>
 </head>
 
 <body>
-    <h1 id="head1">Тренировочный Сайт</h1>
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
-
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
 
     <script>
 
-        for (let i = 0; i < 100; i++) {
+        var offset = 0
+        var direction = "right";
+        $("#heading").offset({ left: offset, top: offset });
 
-            $("h1").fadeOut(100).delay(100).fadeIn(100)
+        function move() {
+            if (direction === "right") {
+                $("#heading").offset({ left: offset });
+                offset++
+                if (offset > 200) {
+                    offset = 0
+                    direction = "down"
+                }
+            } else if (direction === "down") {
+                $("#heading").offset({ top: offset });
+                offset++
+                if (offset > 200) {
+                    offset = 200
+                    direction = "left"
+                }
+            } else if (direction === "left") {
+                $("#heading").offset({ left: offset });
+                offset--
+                if (offset < 0) {
+                    offset = 200
+                    direction = "top"
+                }
+            } else if (direction === "top") {
+                $("#heading").offset({ top: offset });
+                offset--
+                if (offset < 0) {
+                    offset = 0
+                    direction = "right"
+                }
+            }
         }
+        
+        var time = setInterval(move, 10);
 
-
-
-
+        var clickHandler = function () {
+            clearInterval(time)
+        };
+        $("html").click(clickHandler);
+        
     </script>
-
 
 </body>
 

@@ -1,29 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Сайт для тренировок</title>
+    <meta charset="UTF-8">
+    <title>Интерактивное программирование</title>
 </head>
 
 <body>
-    <h1 id="title">Тренировочный Сайт</h1>
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
-
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
 
     <script>
+        var stop;
+        var offset = 0
+        var direction = "right";
+        $("#heading").offset({ left: offset, top: offset });
 
 
-        for (let i = 1; i < 4; i++) {
-            
-            var time = 1000 * i
-            $("#title").hide(1).fadeIn(time)
-            
+        function move() {
+
+            if (direction === "right") {
+                $("#heading").offset({ left: offset });
+                offset++
+                if (offset > 200) {
+                    offset = 0
+                    direction = "down"
+                }
+            } else if (direction === "down") {
+                $("#heading").offset({ top: offset });
+                offset++
+                if (offset > 200) {
+                    offset = 200
+                    direction = "left"
+                }
+
+            } else if (direction === "left") {
+                $("#heading").offset({ left: offset });
+                offset--
+                if (offset < 0) {
+                    offset = 200
+                    direction = "top"
+                }
+
+            } else if (direction === "top") {
+                $("#heading").offset({ top: offset });
+                offset--
+                if (offset < 0) {
+                    offset = 0
+                    direction = "right"
+                }
+            }
+
+
+
         }
 
+        var id = setInterval(move, 1000);
 
-    </script>
+
+   </script>
 
 
 </body>

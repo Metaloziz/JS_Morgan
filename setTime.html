@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Сайт для тренировок</title>
+</head>
+
+<body>
+    <h1 id="title">Тренировочный Сайт</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+
+
+    <script>
+        t = 1
+        function time () {
+            
+            $("body").append("<p>"+ "Прошло " + t +"сек"+"</p>");
+            t++
+        }
+
+        var timeOut = setInterval(time, 1000);
+
+        //setTimeout(clearTimeout(timeOut), 10000)
+        
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
