@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Интерактивное программирование</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="heading">Привет, мир!</h1>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
+
+    <script>
+
+
+        var sound = function () {
+            console.log(this.name + ": " + this.voice);
+        };
+
+        var dog = {
+            name: "Bim",
+            legs: 4,
+            age: 15,
+            voice: "GAF",
+            sound: sound
+        };
+
+        var cat = {
+            name: "Mursik",
+            legs: 4,
+            age: 10,
+            voice: "Mau",
+            sound: sound
+        };
+
+
+
+
+
+
+        cat.sound();
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

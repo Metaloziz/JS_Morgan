@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Гонки</title>
+</head>
+
+<body>
+    <h1>Появись</h1>
+    <h2>Поехали</h2>
+
+    <!-- загруженная библиотека-->
+    <script src="https://code.jquery.com/jquery-2.1.0.js">
+    </script>
+
+    <script>
+
+        // функция добавления для конструктора
+        function Car(x, y, s) {
+            this.x = x;
+            this.y = y;
+            this.speed = s;
+        };
+
+        // фн. кот. добавляет элемент на страницу
+        Car.prototype.draw = function () {
+            // переменной присваиваем картинку
+            var carHtml = '<img src="https://catherineasquithgallery.com/uploads/posts/2021-03/1614567249_70-p-kartinka-mashini-na-belom-fone-96.png">'
+            // передаём carHtml в фн. $, кот. преобразует егов эл. jQuery с инфой о теге <img>
+            // carElement теперь фн-я!
+            this.carElement = $(carHtml);
+            // изменяем св-ва фн-ии
+            this.carElement.css({
+                height: 100,
+                weidht: 100,
+                position: "absolute",
+                left: this.x,
+                top: this.y
+            });
+            // добавляем картинку в элемент body
+            $("body").append(this.carElement.fadeIn(2000));
+        };
+
+        // Добавляем метод для движения вниз
+        Car.prototype.moveDown = function () {
+
+            if (this.y < 500){
+
+            this.y += Math.round(Math.random() * this.speed)
+            //this.x += Math.round(Math.random()*1)
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            })
+            } else clearInterval
+
+        };
+        
+        // Добавляем метод для движения вверх
+        Car.prototype.moveTop = function () {
+            this.y -= Math.round(Math.random() * 2)
+            //this.x += Math.round(Math.random()*1)
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            })
+        };
+        
+        // Добавляем метод для движения вправо
+        Car.prototype.moveRigth = function () {
+            //this.y += Math.round(Math.random() * 2)
+            this.x += Math.round(Math.random()*2)
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            })
+        };
+        
+        // Добавляем метод для движения влево
+        Car.prototype.moveLeft = function () {
+            //this.y += Math.round(Math.random() * 2)
+            this.x -= Math.round(Math.random()*2)
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            })
+        };
+
+        // создаём новые картинки с координатами
+        var aston1 = new Car(200, 20, 1); // третья цифра - скорость
+        var aston2 = new Car(400, 20, 2);
+        var aston3 = new Car(600, 20, 3);
+
+        // вызываем фн. добавления картинок 
+        function a() {
+            aston1.draw();
+            aston2.draw();
+            aston3.draw();
+        };
+
+        // вызываем фн. движения
+        function b() {
+            aston1.moveDown();
+            aston2.moveDown();
+            aston3.moveDown();
+        };
+
+        // обработчики
+        $("h1").click(a)
+        $("h2").click(start)
+
+        
+        function start() {
+
+            
+                setInterval(b, 10)
+
+        }
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
