@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+    
+        ctx.strokeStyle = "Turquoise"; // litle man
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(250, 20);//1
+        ctx.lineTo(300, 20);
+        ctx.lineTo(350, 120);
+        
+        ctx.stroke();
+
+
+
+
+
+
+    
+    </script>
+</body>
+
+</html>

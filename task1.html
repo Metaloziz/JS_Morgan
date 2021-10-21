@@ -2,37 +2,76 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Интерактивное программирование</title>
+    <title>Canvas</title>
 </head>
 
 <body>
-
-    <h1 id="heading">Привет, мир!</h1>
-    <p id="paragraf">
-        PagePagePageP
-    </p>
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <canvas id="canvas" width="500" height="500"></canvas>
     <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+
+        function snowman(x, y) {
 
 
 
-        var f = function (event) {
+            // head + body
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "blue"
+            ctx.beginPath();
+            ctx.arc(x, y, 30, Math.PI / 2, Math.PI * 2 + Math.PI / 2, false)
+            ctx.arc(x, y + 70, 40, Math.PI * 2 - Math.PI / 2, Math.PI * 4, false)
+            ctx.stroke();
 
-            $("#paragraf").offset({
-                left: event.pageX,
-                top: event.pageY
-                
-            });
-            console.log(event.pageX, event.pageY)
-        }
-        $("html").click(f);
+            //stone
+            //left eye
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x + 10, y - 10, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+            //right eye
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x - 10, y - 10, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+            // 1st stone
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x, y + 50, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+            // 2st stone
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x, y + 70, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+            // 3st stone
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(x, y + 90, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+            //nose
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            ctx.fillStyle = "red";
+            ctx.arc(x, y + 5, 5, 0, Math.PI * 2, true)
+            ctx.fill();
+
+        };
+
+        var a = parseInt(prompt("x"));
+        var b = parseInt(prompt("y"));
+
+        snowman(a, b)
+
+
 
     </script>
-</body>
-
-</html>
-
 </body>
 
 </html>
