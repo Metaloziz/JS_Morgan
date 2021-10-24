@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Анимация с canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <script>
+
+        // drow one circle
+        function circle(x, y, radius, fillCircle) {
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+            if (fillCircle) {
+                ctx.fill();
+            } else {
+                ctx.stroke();
+            }
+        };
+
+        // create random coordinats
+        function update(coordinate) {
+            var offset = Math.random() * 2 - 1;
+            coordinate += offset;
+
+            if (coordinate > 200) {
+                coordinate = 200
+            }
+            if (coordinate < 0) {
+                coordinate = 0
+            }
+            return coordinate;
+        };
+
+        // drow Bee (coordinates)
+        function drowBee(x, y) {
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "Black";
+            ctx.fillStyle = "Gold";
+
+            circle(x, y, 8, true);
+            circle(x, y, 8, false);
+            circle(x - 5, y - 11, 5, false);
+            circle(x + 5, y - 11, 5, false);
+            circle(x - 2, y, 2, false);
+            circle(x + 2, y, 2, false);
+        }
+
+        // create place for drow
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var x = 100;
+        var y = 100;
+
+        // clear place
+        function c() {
+            ctx.clearRect(1, 1, 198, 198); // ради эксперемента
+        }
+
+        // function call
+        function f() {
+            c();
+            drowBee(x, y);
+            x = update(x);
+            y = update(y);
+        }
+
+        // boder
+        ctx.strokeRect(0, 0, 200, 200);
+
+        // repeat
+        setInterval(f, 10)
+
+    </script>
+</body>
+
+</html>

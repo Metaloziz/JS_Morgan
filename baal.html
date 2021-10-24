@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Прыгающий мяч</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="100" height="500"></canvas>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+
+        // полотно  + конструктор
+        var canvas = document.getElementById("canvas");
+
+        // положене и скорость мяча 
+        function Ball() {
+            this.x = 11;
+            this.y = 11;
+            this.xSpeed = (Math.random() * 1) - 3;
+            this.ySpeed = (Math.random() * 1) - 3;
+            var colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+            this.color = pickRandomWord(colors);
+        };
+
+        // какобойтись без этой фн. ?
+        var pickRandomWord = function (words) {
+            return words[Math.floor(Math.random() * words.length)];
+        };
+
+        //параметры рисования круга
+        function circle(x, y, radius) {
+            ctx.beginPath();
+
+            ctx.arc(x, y, radius, 0, Math.PI * 2,);
+            ctx.stroke();
+            ctx.fill();
+
+        };
+
+        // отрисовка круга
+        Ball.prototype.draw = function () {
+            ctx.fillStyle = this.color;
+            circle(this.x, this.y, 10) //5 -радиус круга
+
+        };
+
+        // изменение скорости круга
+        Ball.prototype.move = function () {
+            this.x += this.xSpeed;
+            this.y += this.ySpeed;
+        };
+
+        // проверка столкновения со стенкой
+        Ball.prototype.checkCollision = function () {
+            if (this.x < 10 || this.x > cw - 10) {
+                this.xSpeed = - this.xSpeed;
+            }
+            if (this.y < 10 || this.y > ch - 10) {
+                this.ySpeed = - this.ySpeed;
+            }
+        };
+
+        var ctx = canvas.getContext("2d");
+        var ball = new Ball(); // почему если вынести эти строку вверх, код не работает
+        var cw = canvas.width;
+        var ch = canvas.height;
+        var balls = [];
+
+        // новые шары
+        var a = 10;
+
+        for (let i = 0; i < a; i++) {
+            balls[i] = new Ball();
+        }
+
+        $("html").click(a++);// не сработало
+
+
+        // анимация + интерваsл
+        setInterval(function () {
+            ctx.clearRect(0, 0, cw, ch);
+            for (let i = 0; i < balls.length; i++) {
+                balls[i].draw();
+                balls[i].move();
+                balls[i].checkCollision();
+            }
+            ctx.strokeStyle = "black";
+            ctx.strokeRect(0, 0, cw, ch);
+        }, 25);
+
+    </script>
+</body>
+
+</html>
