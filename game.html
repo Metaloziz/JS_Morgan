@@ -11,7 +11,7 @@
 
     <script>
 
-        var words = [
+        let words = [
             "и",
             "ви",
             "окн",
@@ -19,31 +19,31 @@
             "метал",
         ];
         // выбор слова
-        var pickWord = function () {
+        let pickWord = function () {
             words[(Math.floor(Math.random() * words.length))];
         };
         // создаёт массив для заданного слова
-        var setupAnswerArray = function (word) {
-            var answerArray = [];
+        let setupAnswerArray = function (word) {
+            let answerArray = [];
             for (i = 0; i < word.length; i++) {
                 answerArray[i] = "_";
             }
         }
         
         //случайное слово
-        var word = pickWord();
+        let word = pickWord();
 
         // текущее состояние игры
-        var showPlayerProgress = function(answerArray) {
+        let showPlayerProgress = function(answerArray) {
             alert(answerArray)
         }
         
         // запрос ответа игрока
-        var getGuess = function() {
+        let getGuess = function() {
             while (remainingLetters > 0 && t < 5) {
             t++;
             alert(answerArray.join(" "));
-            var guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
+            let guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
             if (guess === null) {
                 break;
             } else if (guess.length !== 1) {
@@ -57,17 +57,17 @@
                     if (word[j] === guess && answerArray[j] == ("_")) {
                         answerArray[j] = guess;
                         remainingLetters--
-                    };
-                };
-            };
-        };
+                    }
+                }
+            }
+        }
         }
 
-        var updateGameStatus = function (guess, word, answerArray) {
+        let updateGameStatus = function (guess, word, answerArray) {
 
         }
 
-        var showAnswerAndCongratulatePlayer = function (answerArray) {
+        let showAnswerAndCongratulatePlayer = function (answerArray) {
             alert(answerArray.join(" "))
 
         // вывод если начать ОТМЕНА
@@ -78,14 +78,14 @@
         }
 
         // сколько букв осталось угадать
-        var remainingLetters = word.length;
-        var t = 0;
+        let remainingLetters = word.length;
+        let t = 0;
 
         //Игровой цикл,  T - колличество попыток ввода 
         while (remainingLetters > 0 && t < 5) {
             t++;
             alert(answerArray.join(" "));
-            var guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
+            let guess = prompt("Угадай букву или нажми Отмена для выхода").toLowerCase();
             if (guess === null) {
                 break;
             } else if (guess.length !== 1) {
