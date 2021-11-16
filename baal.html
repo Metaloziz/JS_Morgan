@@ -10,7 +10,6 @@
     <canvas id="canvas" width="100" height="500"></canvas>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
-
         // полотно  + конструктор
         var canvas = document.getElementById("canvas");
 
@@ -36,14 +35,12 @@
             ctx.arc(x, y, radius, 0, Math.PI * 2,);
             ctx.stroke();
             ctx.fill();
-
         };
 
         // отрисовка круга
         Ball.prototype.draw = function () {
             ctx.fillStyle = this.color;
             circle(this.x, this.y, 10) //5 -радиус круга
-
         };
 
         // изменение скорости круга
@@ -77,7 +74,6 @@
 
         $("html").click(a++);// не сработало
 
-
         // анимация + интерваsл
         setInterval(function () {
             ctx.clearRect(0, 0, cw, ch);
@@ -89,7 +85,6 @@
             ctx.strokeStyle = "black";
             ctx.strokeRect(0, 0, cw, ch);
         }, 25);
-
     </script>
 </body>
 
