@@ -10,11 +10,7 @@
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
-
-
         function snowman(x, y) {
-
-
 
             // head + body
             ctx.lineWidth = 3;
@@ -61,16 +57,11 @@
             ctx.fillStyle = "red";
             ctx.arc(x, y + 5, 5, 0, Math.PI * 2, true)
             ctx.fill();
-
         };
 
         var a = parseInt(prompt("x"));
         var b = parseInt(prompt("y"));
-
         snowman(a, b)
-
-
-
     </script>
 </body>
 
