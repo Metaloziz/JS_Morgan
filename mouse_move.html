@@ -7,31 +7,22 @@
 </head>
 
 <body>
-
     <h1 id="heading">Привет, мир!</h1>
     <p id="paragraf">
         PagePagePageP
     </p>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
-
-
-
         var f = function (event) {
 
             $("#paragraf").offset({
                 left: event.pageX,
-                top: event.pageY
-                
+                top: event.pageY          
             });
             console.log(event.pageX, event.pageY)
         }
         $("html").mousemove(f);
-
     </script>
-</body>
-
-</html>
 
 </body>
 
