@@ -46,7 +46,6 @@
         Car.prototype.moveDown = function () {
 
             if (this.y < 500){
-
             this.y += Math.round(Math.random() * this.speed)
             //this.x += Math.round(Math.random()*1)
             this.carElement.css({
@@ -54,7 +53,6 @@
                 top: this.y
             })
             } else clearInterval
-
         };
         
         // Добавляем метод для движения вверх
@@ -109,7 +107,6 @@
         // обработчики
         $("h1").click(a)
         $("h2").click(start)
-
         
         function start() {
            setInterval(b, 10)
